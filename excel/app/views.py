@@ -25,9 +25,14 @@ def home(request):
     form = forms.ExcelForm(request.POST or None)
     if request.method =='POST':
         if form.is_valid():
-            form.first_name = request.user.first_name
-            form.second_name = request.user.last_name
-            form.save()
+            print('d3')
+            temp =form.save(commit=False)
+            print('d4')
+            temp.first_name= request.user.first_name
+            temp.last_name = request.user.last_name
+            temp.save()
+            print('d5')
+            
         else:
             form = forms.ExcelForm(request.POST)
 
