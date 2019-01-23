@@ -5,6 +5,9 @@
   <meta charset="utf-8">
   <link rel=”stylesheet” href=”//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css”>
   <link rel=”stylesheet” href=”/resources/demos/style.css”>
+
+  {% load static %} 
+  <link rel="stylesheet" type="text/css" href="{% static 'app/base.css' %}">
 {% load bootstrap4 %}       {# import bootstrap4/bootstrap3 #}
 {% bootstrap_css %}         {# Embed Bootstrap CSS #}
 {% bootstrap_javascript jquery='full' %}  {# Embed Bootstrap JS+jQuery #}

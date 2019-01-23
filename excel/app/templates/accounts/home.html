@@ -5,20 +5,51 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <a href="{% url 'logout' %}">or logout</a>
-  <br>
-  <form action="" method="post">
-    {% csrf_token %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   
-    {{ form.as_p }}
-    <input type="submit" value="Create" />
-</form>
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
-  <br>
-  <a href="{% url 'signup' %}">or register</a>
+  <div class="innerRow">
+    <a class="navbar-brand" href="#">Excel Eksport</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+     
+    </div>
+  </div>
+  <form class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-success my-2 my-sm-0" href="{% url 'logout' %}" type="submit">Logout</button>
+    </form>
+  </nav>
+  
 
+  <br>
+  <div class="row"> 
+        
+       <div class="innerRow">
+      <form action="" method="post" class= >
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        <input type="submit" value="Create" />
+    </form>  
+  </div>
+</div>
+
+{% else %}
+
+<a href="{% url 'signup' %}">
+    <div class="split left">
+    <div class="centered">
+        <h2>Signup</h2>
+    </div>
+  </div>
+</a>
+  
+<a href="{% url 'login' %}">
+  <div class="split right">
+    <div class="centered">
+     
+      <h2 >Login</h2>
+      
+    </div>
+  </div> 
+</a>
 {% endif %}
 {% endblock %}

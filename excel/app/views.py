@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
-
+from .resources import ExcelResource
 from . import forms
 
 
@@ -25,13 +25,13 @@ def home(request):
     form = forms.ExcelForm(request.POST or None)
     if request.method =='POST':
         if form.is_valid():
-            print('d3')
+            
             temp =form.save(commit=False)
-            print('d4')
+            
             temp.first_name= request.user.first_name
             temp.last_name = request.user.last_name
             temp.save()
-            print('d5')
+            return redirect('export')
             
         else:
             form = forms.ExcelForm(request.POST)
@@ -41,4 +41,13 @@ def home(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('home')
+    return redirect('registration/login.html')
+
+
+
+def export(request):
+    fileResource = ExcelResource()
+    dataset = fileResource.export()
+    response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="data.xls"'
+    return response

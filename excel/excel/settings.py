@@ -26,7 +26,8 @@ SECRET_KEY = '5%52x!t2xyr*%ehj*fjz(xxdtplot-(d#x04ocb7@94o))nm$x'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-LOGOUT_REDIRECT_URL ='/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = 'accounts/login'
 
 # Application definition
 
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app','bootstrap_datepicker_plus',
     'bootstrap4',
+    'import_export',
 ]
 
 BOOTSTRAP4 = {
@@ -56,7 +58,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'excel.urls'
-LOGIN_REDIRECT_URL = '/'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
